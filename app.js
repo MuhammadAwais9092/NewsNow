@@ -20,6 +20,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Session configuration with secure cookies in production
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your_secret_key',
   resave: false,
@@ -40,7 +41,7 @@ app.use((req, res, next) => {
 });
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -56,30 +57,22 @@ app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
+// Update callback URL based on environment
 app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login.html' }),
-  (req, res) => {
-    res.send(`
-      <script>
-        localStorage.setItem('isLoggedIn', 'true');
-        window.location.href = '/';
-      </script>
-    `);
-  }
+  passport.authenticate('google', { 
+    failureRedirect: '/login.html',
+    successRedirect: '/'
+  })
 );
 
+// Update logout route
 app.get('/logout', (req, res) => {
   req.logout((err) => {
     if (err) {
       console.error('Logout error:', err);
       return res.status(500).json({ error: 'Logout failed' });
     }
-    res.send(`
-      <script>
-        localStorage.removeItem('isLoggedIn');
-        window.location.href = '/';
-      </script>
-    `);
+    res.redirect('/');
   });
 });
 
