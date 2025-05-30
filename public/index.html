@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewsNow - Home</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="js/main.js" defer></script>
+  <script src="js/news.js" defer></script>
+</head>
+<body>cd "C:\Users\YourUsername\Desktop\NewsNow"
+
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">NewsNow</a>
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Navigation -->
+    <nav id="navbar">
+      <ul>
+        <li>
+          <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+            <i class="fas fa-times"></i>
+          </button>
+        </li>
+        <li><a class="active-link" aria-current="page" href="index.html">Home</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/books.html">Books</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+        <li class="profile-link" id="profileLink"><a href="pages/profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Overlay for mobile menu -->
+  <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+
+  <!-- Search bar -->
+  <div class="search-container">
+    <form id="search-form">
+      <input type="search" id="search-input" placeholder="Search for news..." aria-label="Search for news">
+      <button type="submit" aria-label="Search">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+  </div>
+
+  <main id="main-content">
+    <!-- Category Options -->
+    <nav class="options-container">
+      <button class="option active" onclick="selectCategory(event, 'top')">Top News</button>
+      <button class="option" onclick="selectCategory(event, 'entertainment')">entertainment</button>
+      <button class="option" onclick="selectCategory(event, 'health')">health</button>
+      <button class="option" onclick="selectCategory(event, 'science')">science</button>
+      <button class="option" onclick="selectCategory(event, 'sports')">sports</button>
+      <button class="option" onclick="selectCategory(event, 'technology')">technology</button>
+    </nav>
+    
+    <!-- News/Blog Container -->
+    <div class="container" id="news-container"></div>
+
+    <button id="darkModeToggle" class="dark-toggle floating-toggle" aria-label="Toggle dark mode">🌙</button>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>NewsNow</h2>
+        <p>Stay updated with the latest headlines from around the world.</p>
+        <p>Powered by <a href="https://newsdata.io/" target="_blank">NewsData.io</a></p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/about.html">About</a></li>
+          <li><a href="pages/books.html">Books</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter</p>
+        <form>
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NewsNow. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
