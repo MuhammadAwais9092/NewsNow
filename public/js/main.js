@@ -125,52 +125,55 @@ function setupSearch() {
 }
 
 // Check authentication status and update UI
-function updateAuthUI() {
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  const nav = document.querySelector('nav ul');
-  if (!nav) return;
-
-  // Find or create profile link
-  let profileLink = nav.querySelector('.profile-link');
-  if (!profileLink) {
-    profileLink = document.createElement('li');
-    profileLink.className = 'profile-link';
-    profileLink.innerHTML = '<a href="/pages/profile.html">Profile</a>';
-    
-    // Insert before the login/logout button
-    const loginItem = nav.querySelector('.auth-link');
-    if (loginItem) {
-      nav.insertBefore(profileLink, loginItem);
-    } else {
-      nav.appendChild(profileLink);
-    }
-  }
-
-  // Find or create login/logout link
-  let authLink = nav.querySelector('.auth-link');
-  if (!authLink) {
-    authLink = document.createElement('li');
-    authLink.className = 'auth-link';
-    nav.appendChild(authLink);
-  }
-
-  if (isLoggedIn) {
-    profileLink.style.display = '';
-    authLink.innerHTML = '<a href="#" class="accent-link">Logout</a>';
-    authLink.querySelector('a').addEventListener('click', (e) => {
-      e.preventDefault();
-      localStorage.removeItem('isLoggedIn');
-      window.location.href = '/';
+async function updateAuthUI() {
+  try {
+    const response = await fetch('/users/profile', {
+      credentials: 'include' // Important: include credentials for session cookie
     });
-  } else {
-    profileLink.style.display = 'none';
-    authLink.innerHTML = '<a href="/pages/login.html" class="accent-link">Login</a>';
-  }
+    
+    const isLoggedIn = response.ok;
+    const nav = document.querySelector('nav ul');
+    if (!nav) return;
 
-  // Redirect from protected pages if not logged in
-  const protectedPages = ['/pages/profile.html', '/pages/books.html'];
-  if (!isLoggedIn && protectedPages.some(page => window.location.pathname.endsWith(page))) {
-    window.location.href = '/pages/login.html';
+    // Find or create profile link
+    let profileLink = nav.querySelector('.profile-link');
+    if (!profileLink) {
+      profileLink = document.createElement('li');
+      profileLink.className = 'profile-link';
+      profileLink.innerHTML = '<a href="/pages/profile.html">Profile</a>';
+      
+      // Insert before the login/logout button
+      const loginItem = nav.querySelector('.auth-link');
+      if (loginItem) {
+        nav.insertBefore(profileLink, loginItem);
+      } else {
+        nav.appendChild(profileLink);
+      }
+    }
+
+    // Find or create login/logout link
+    let authLink = nav.querySelector('.auth-link');
+    if (!authLink) {
+      authLink = document.createElement('li');
+      authLink.className = 'auth-link';
+      nav.appendChild(authLink);
+    }
+
+    if (isLoggedIn) {
+      profileLink.style.display = '';
+      authLink.innerHTML = '<a href="/logout" class="accent-link">Logout</a>';
+    } else {
+      profileLink.style.display = 'none';
+      authLink.innerHTML = '<a href="/pages/login.html" class="accent-link">Login</a>';
+    }
+
+    // Redirect from protected pages if not logged in
+    const protectedPages = ['/pages/profile.html', '/pages/books.html'];
+    if (!isLoggedIn && protectedPages.some(page => window.location.pathname.endsWith(page))) {
+      window.location.href = '/pages/login.html';
+    }
+  } catch (error) {
+    console.error('Error checking auth status:', error);
   }
 }
 
