@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewsNow - About Us</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/about.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="header">
+    <div class="logo">
+      <a href="../index.html">NewsNow</a>
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Navigation -->
+    <nav id="navbar">
+      <ul>
+        <li>
+          <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+            <i class="fas fa-times"></i>
+          </button>
+        </li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a class="active-link" aria-current="page" href="about.html">About</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="profile-link" id="profileLink"><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Overlay for mobile menu -->
+  <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+
+  <main id="main-content">
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <h1>About NewsNow</h1>
+        <p>Your trusted source for timely and reliable news around the world</p>
+      </div>
+    </section>
+    
+    <section class="about-section">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>Our Story</h2>
+          <p>Founded in 2025, NewsNow emerged from a simple idea: to provide people with diverse, accurate, and accessible news in an increasingly complex information landscape.</p>
+          
+          <p>What started as a small team of passionate journalists has grown into a global network of reporters, editors, and tech specialists dedicated to bringing you the most relevant stories from around the world.</p>
+          
+          <p>We believe that informed citizens make better decisions, and our mission is to empower you with the knowledge you need to understand and engage with the world around you.</p>
+          
+          <h2>Our Values</h2>
+          <div class="values-grid">
+            <div class="value-card">
+              <i class="fas fa-check-circle"></i>
+              <h3>Accuracy</h3>
+              <p>We verify facts and provide context to ensure our reporting is reliable and trustworthy.</p>
+            </div>
+            <div class="value-card">
+              <i class="fas fa-balance-scale"></i>
+              <h3>Fairness</h3>
+              <p>We present multiple perspectives and strive for balanced, unbiased coverage.</p>
+            </div>
+            <div class="value-card">
+              <i class="fas fa-globe"></i>
+              <h3>Global Perspective</h3>
+              <p>We bring you news from all corners of the world, recognizing the interconnectedness of our global community.</p>
+            </div>
+            <div class="value-card">
+              <i class="fas fa-book-reader"></i>
+              <h3>Accessibility</h3>
+              <p>We make news easy to find, understand, and share for all readers.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-sidebar">
+          <div class="team-section">
+            <h2>Our Team</h2>
+            <div class="team-members">
+              <div class="team-member">
+                <img src="https://images.pexels.com/photos/5393594/pexels-photo-5393594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sarah Johnson" class="team-photo">
+                <h3>Sarah Johnson</h3>
+                <p>Editor-in-Chief</p>
+              </div>
+              <div class="team-member">
+                <img src="https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Michael Chen" class="team-photo">
+                <h3>Michael Chen</h3>
+                <p>Technology Editor</p>
+              </div>
+              <div class="team-member">
+                <img src="https://images.pexels.com/photos/5792641/pexels-photo-5792641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Olivia Rodriguez" class="team-photo">
+                <h3>Olivia Rodriguez</h3>
+                <p>International Correspondent</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="stats-section">
+            <h2>NewsNow by the Numbers</h2>
+            <div class="stats-container">
+              <div class="stat-item">
+                <span class="stat-number">10M+</span>
+                <span class="stat-label">Monthly Readers</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">150+</span>
+                <span class="stat-label">Countries Reached</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">News Coverage</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Journalists</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cta-box">
+            <h3>Join Our Team</h3>
+            <p>Passionate about journalism? We're always looking for talented writers and editors to join our global team.</p>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="testimonials">
+  <h2>What Our Readers Say</h2>
+  <div class="testimonial-slider">
+    <div class="testimonial">
+      <p>"NewsNow is my daily companion for staying updated with reliable news in Dubai. Highly recommended!"</p>
+      <div class="testimonial-author">
+        <p><strong>Ahmed Al Mansoori</strong><br>Dubai, UAE</p>
+      </div>
+    </div>
+    <div class="testimonial">
+      <p>"The balanced reporting and insightful articles make NewsNow a trusted source for our community."</p>
+      <div class="testimonial-author">
+        <p><strong>Sara Fernandes</strong><br>Dubai, UAE</p>
+      </div>
+    </div>
+    <div class="testimonial">
+  <p>"NewsNow provides trustworthy journalism. I feel confident sharing their stories with my friends and family."</p>
+  <div class="testimonial-author">
+    <p><strong>Layla Abdallah</strong><br>Sharjah, UAE</p>
+  </div>
+</div>
+
+<div class="testimonial">
+  <p>"Finally, a news platform that covers the Middle East with the depth and fairness it deserves."</p>
+  <div class="testimonial-author">
+    <p><strong>George Boutros</strong><br>Dubai, UAE</p>
+  </div>
+</div>
+
+<div class="testimonial">
+  <p>"As an expat professional, I rely on NewsNow to keep me in the loop with both UAE and global updates."</p>
+  <div class="testimonial-author">
+    <p><strong>Anjali Mehra</strong><br>Abu Dhabi, UAE</p>
+  </div>
+</div>
+    <div class="testimonial">
+      <p>"Thanks to NewsNow, I can easily keep track of local and international affairs from a fresh perspective."</p>
+      <div class="testimonial-author">
+        <p><strong>Rahul Nair</strong><br>Dubai, UAE</p>
+      </div>
+    </div>
+    <div class="testimonial">
+      <p>"Their business section is a game changer for entrepreneurs like me. Clear, concise, and relevant!"</p>
+      <div class="testimonial-author">
+        <p><strong>Fatima Khan</strong><br>Dubai, UAE</p>
+      </div>
+    </div>
+    <div class="testimonial">
+      <p>"I love the layout and speed of NewsNow — it’s now part of my morning routine."</p>
+      <div class="testimonial-author">
+        <p><strong>Joseph Mathew</strong><br>Dubai, UAE</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <button id="darkModeToggle" class="dark-toggle floating-toggle" aria-label="Toggle dark mode">🌙</button>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>NewsNow</h2>
+        <p>Stay updated with the latest headlines from around the world.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter</p>
+        <form>
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NewsNow. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

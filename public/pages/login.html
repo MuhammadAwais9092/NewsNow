@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewsNow - Login</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="../js/main.js" defer></script>
+  <script  src="../js/login.js" defer></script>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Login</button>
+            <button class="auth-tab" data-tab="register">Register</button>
+        </div>
+
+        <form id="login-form" class="auth-form active">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" />
+            <input type="password" id="login-password" placeholder="Password" />
+            <button type="submit">Login</button>
+            <div class="divider">
+                <span>or</span>
+            </div>
+            <button type="button" class="google-btn">
+                <img src="https://www.google.com/favicon.ico" alt="Google" />
+                Continue with Google
+            </button>
+        </form>
+
+        <form id="register-form" class="auth-form">
+          <h2>Register</h2>
+          <input type="text" id="register-username" placeholder="Username" />
+          <input type="email" id="register-email" placeholder="Email" />
+          <input type="password" id="register-password" placeholder="Password" />
+          <input type="password" id="register-confirm-password" placeholder="Confirm Password" />
+          <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

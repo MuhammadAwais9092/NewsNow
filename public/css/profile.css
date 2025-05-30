@@ -1,0 +1,164 @@
+/* Profile Page Specific Styles */
+
+.profile-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: var(--space-3);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--card-border);
+}
+
+body.light-mode .profile-container {
+  background-color: var(--light-card-bg);
+  border: 1px solid var(--light-card-border);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.profile-photo-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto var(--space-2);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+}
+
+.photo-upload {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.photo-upload:hover {
+  background: var(--accent-dark);
+  transform: scale(1.1);
+}
+
+.photo-upload i {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.photo-upload input[type="file"] {
+  display: none;
+}
+
+.profile-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: var(--space-3);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+body.light-mode .form-group label {
+  color: var(--light-text);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: var(--space-2);
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary-light);
+  border-radius: var(--radius-md);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+}
+
+body.light-mode .form-group input,
+body.light-mode .form-group select {
+  background-color: var(--light-primary);
+  border: 1px solid var(--light-card-border);
+  color: var(--light-text);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(0, 113, 255, 0.2);
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-2);
+}
+
+.category-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.category-checkbox input[type="checkbox"] {
+  accent-color: var(--accent-color);
+}
+
+.save-button {
+  display: block;
+  width: 100%;
+  padding: var(--space-2);
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin-top: var(--space-4);
+}
+
+.save-button:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .profile-container {
+    margin: 1rem;
+    padding: var(--space-2);
+  }
+  
+  .profile-photo-container {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .categories-container {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

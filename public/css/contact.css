@@ -1,0 +1,324 @@
+/* Contact Page Specific Styles */
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  max-width: 1200px;
+  margin: 0 auto var(--space-4);
+  padding: var(--space-2);
+}
+
+.contact-info {
+  padding: var(--space-3);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--card-border);
+}
+
+body.light-mode .contact-info {
+  background-color: var(--light-card-bg);
+  border: 1px solid var(--light-card-border);
+}
+
+.contact-info h1 {
+  font-size: 2.2rem;
+  margin-bottom: var(--space-1);
+  color: var(--text-color);
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .contact-info h1 {
+  color: var(--light-text);
+}
+
+.contact-info > p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .contact-info > p {
+  color: var(--light-text-muted);
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.contact-method {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.contact-method .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  transition: background-color var(--transition-normal);
+}
+
+body.light-mode .contact-method .icon {
+  background-color: var(--light-primary);
+}
+
+.contact-method .icon i {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+.contact-method h3 {
+  margin: 0 0 var(--space-1);
+  font-size: 1.1rem;
+  color: var(--text-color);
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .contact-method h3 {
+  color: var(--light-text);
+}
+
+.contact-method p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.5;
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .contact-method p {
+  color: var(--light-text-muted);
+}
+
+.social-links h3 {
+  margin-bottom: var(--space-2);
+  font-size: 1.1rem;
+  color: var(--text-color);
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .social-links h3 {
+  color: var(--light-text);
+}
+
+.social-links .social-icons {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.social-links .social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: all var(--transition-normal);
+}
+
+body.light-mode .social-links .social-icons a {
+  background-color: var(--light-primary);
+  color: var(--light-text-muted);
+}
+
+.social-links .social-icons a:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Contact Form */
+.contact-form-container {
+  padding: var(--space-3);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--card-border);
+}
+
+body.light-mode .contact-form-container {
+  background-color: var(--light-card-bg);
+  border: 1px solid var(--light-card-border);
+}
+
+.contact-form h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-3);
+  color: var(--text-color);
+  text-align: center;
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .contact-form h2 {
+  color: var(--light-text);
+}
+
+.form-group {
+  margin-bottom: var(--space-2);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .form-group label {
+  color: var(--light-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: var(--space-2);
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary-light);
+  border-radius: var(--radius-md);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+}
+
+body.light-mode .form-group input,
+body.light-mode .form-group textarea {
+  background-color: var(--light-primary);
+  border: 1px solid var(--light-card-border);
+  color: var(--light-text);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(0, 113, 255, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: var(--space-2);
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin-top: var(--space-3);
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Map Section */
+.map-container {
+  max-width: 1200px;
+  margin: 0 auto var(--space-4);
+  padding: 0 var(--space-2);
+}
+
+.map-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-2);
+  color: var(--text-color);
+  transition: color var(--transition-normal);
+}
+
+body.light-mode .map-container h2 {
+  color: var(--light-text);
+}
+
+.map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow var(--transition-normal);
+  border: 1px solid var(--card-border);
+}
+
+body.light-mode .map {
+  border: 1px solid var(--light-card-border);
+}
+
+/* Floating Dark Mode Toggle */
+.floating-toggle {
+  position: fixed;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  z-index: 90;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-normal);
+}
+
+.floating-toggle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .contact-info h1 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-info > p {
+    font-size: 1rem;
+  }
+  
+  .contact-method {
+    align-items: center;
+  }
+  
+  .contact-method .icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .contact-form h2 {
+    font-size: 1.5rem;
+  }
+  
+  .map-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .floating-toggle {
+    bottom: var(--space-2);
+    right: var(--space-2);
+    width: 40px;
+    height: 40px;
+  }
+}
