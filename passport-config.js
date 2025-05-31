@@ -4,7 +4,7 @@ const User = require('./models/user');
 
 // Set callback URL based on environment
 const CALLBACK_URL = process.env.NODE_ENV === 'production'
-  ? 'https://newsnow.stackblitz.io/auth/google/callback'  // Updated production URL
+  ? process.env.GOOGLE_CALLBACK_URL // Use environment variable for flexibility
   : 'http://localhost:3000/auth/google/callback';
 
 passport.use(new GoogleStrategy({
