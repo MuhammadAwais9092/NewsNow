@@ -8,7 +8,7 @@ const ensureAuth = (req, res, next) => {
   res.status(401).json({ error: 'Not authenticated' });
 };
 
-// Create a new user (public)
+// Create a new user 
 router.post('/', async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all users (public)
+// Get all users 
 router.get('/', async (req, res) => {
   try {
     const users = await User.find();
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a user by ID (public)
+// Get a user by ID 
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Update a user (public or protected depending on your app logic)
+// Update a user 
 router.put('/:id', async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete a user (public or protected depending on your app logic)
+// Delete a user 
 router.delete('/:id', async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
