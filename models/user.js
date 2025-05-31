@@ -1,37 +1,66 @@
-const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const User = require('../models/user');
 
-const UserSchema = new mongoose.Schema({
-    googleId: {
-        type: String,
-        unique: true,
-        sparse: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
+// Authentication middleware
+const ensureAuth = (req, res, next) => {
+  if (req.user) return next();
+  res.status(401).json({ error: 'Not authenticated' });
+};
+
+// Create a new user (public)
+router.post('/', async (req, res) => {
+  const { name, email, password } = req.body;
+  try {
+    const newUser = new User({ name, email, password });
+    await newUser.save();
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
-// Update the updatedAt timestamp before saving
-UserSchema.pre('save', function(next) {
-    this.updatedAt = new Date();
-    next();
+// Get all users (public)
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+// Get a user by ID (public)
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Update a user (public or protected depending on your app logic)
+router.put('/:id', async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete a user (public or protected depending on your app logic)
+router.delete('/:id', async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json({ message: 'User deleted' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+module.exports = router;
