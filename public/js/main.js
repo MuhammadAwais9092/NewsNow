@@ -61,7 +61,6 @@ function setupDarkMode() {
     
     const isDark = savedMode !== null ? savedMode === "true" : systemPrefersDark;
     
-    // Add "light-mode" class if not dark
     document.body.classList.toggle("light-mode", !isDark);
     toggleBtn.textContent = isDark ? "☀️" : "🌙";
     
@@ -128,15 +127,12 @@ function setupSearch() {
 // Check authentication status and update UI
 async function updateAuthUI() {
   try {
-    const response = await fetch('/users/profile', {
-      credentials: 'include'
-    });
-    
-    const isLoggedIn = response.ok;
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const nav = document.querySelector('nav ul');
     if (!nav) return;
 
-    // Find or create login/logout link
+    // Find or create auth link
     let authLink = nav.querySelector('.auth-link');
     if (!authLink) {
       authLink = document.createElement('li');
@@ -144,10 +140,11 @@ async function updateAuthUI() {
       nav.appendChild(authLink);
     }
 
+    // Update auth link based on login status
     if (isLoggedIn) {
-      authLink.innerHTML = '<a href="/logout" class="accent-link">Logout</a>';
+      authLink.innerHTML = '<a href="#" class="accent-link" onclick="handleLogout(event)">Logout</a>';
     } else {
-      authLink.innerHTML = '<a href="/pages/login.html" class="accent-link">Login</a>';
+      authLink.innerHTML = '<a href="pages/login.html" class="accent-link">Login</a>';
     }
 
     // Redirect from protected pages if not logged in
@@ -157,6 +154,20 @@ async function updateAuthUI() {
     }
   } catch (error) {
     console.error('Error checking auth status:', error);
+  }
+}
+
+// Handle logout
+async function handleLogout(event) {
+  event.preventDefault();
+  try {
+    const response = await fetch('/logout');
+    if (response.ok) {
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = '/';
+    }
+  } catch (error) {
+    console.error('Error during logout:', error);
   }
 }
 
