@@ -1,4 +1,4 @@
-// Load environment variables from .env at the top
+// Loading environment variables from .env at the top
 require('dotenv').config();
 
 const express = require('express');
@@ -13,7 +13,7 @@ require('./passport-config');
 
 const app = express();
 
-// Use dynamic port from .env (important for production)
+// Use dynamic port from .env 
 const port = process.env.PORT || 3000;
 
 // Middleware
@@ -27,14 +27,14 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    maxAge: 24 * 60 * 60 * 1000 
   }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Make user available to all templates
+// Making user available to all templates
 app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
