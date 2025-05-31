@@ -13,7 +13,7 @@ require('./passport-config');
 
 const app = express();
 
-// Use dynamic port from .env (important for Render)
+// Use dynamic port from .env (important for production)
 const port = process.env.PORT || 3000;
 
 // Middleware
@@ -57,7 +57,6 @@ app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-// Update callback URL based on environment
 app.get('/auth/google/callback', 
   passport.authenticate('google', { 
     failureRedirect: '/login.html',
@@ -65,7 +64,7 @@ app.get('/auth/google/callback',
   })
 );
 
-// Update logout route
+// Logout route
 app.get('/logout', (req, res) => {
   req.logout((err) => {
     if (err) {

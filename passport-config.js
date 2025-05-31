@@ -2,8 +2,9 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('./models/user');
 
+// Set callback URL based on environment
 const CALLBACK_URL = process.env.NODE_ENV === 'production'
-  ? 'https://newsnow-anxk.onrender.com/auth/google/callback'
+  ? 'https://newsnow.stackblitz.io/auth/google/callback'  // Updated production URL
   : 'http://localhost:3000/auth/google/callback';
 
 passport.use(new GoogleStrategy({

@@ -18,15 +18,6 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    age: {
-        type: Number
-    },
-    photoUrl: {
-        type: String
-    },
-    categories: [{
-        type: String
-    }],
     createdAt: {
         type: Date,
         default: Date.now

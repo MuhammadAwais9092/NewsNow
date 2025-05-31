@@ -49,7 +49,7 @@ function closeSidebar() {
   document.body.style.overflow = '';
 }
 
-// Dark Mode Toggle
+// Dark Mode Toggle with localStorage persistence
 function setupDarkMode() {
   const toggleBtn = document.getElementById("darkModeToggle");
   if (!toggleBtn) return;
@@ -65,6 +65,7 @@ function setupDarkMode() {
     document.body.classList.toggle("light-mode", !isDark);
     toggleBtn.textContent = isDark ? "☀️" : "🌙";
     
+    // Save initial preference if not already set
     if (savedMode === null) {
       localStorage.setItem("darkMode", isDark);
     }
@@ -128,28 +129,12 @@ function setupSearch() {
 async function updateAuthUI() {
   try {
     const response = await fetch('/users/profile', {
-      credentials: 'include' // Important: include credentials for session cookie
+      credentials: 'include'
     });
     
     const isLoggedIn = response.ok;
     const nav = document.querySelector('nav ul');
     if (!nav) return;
-
-    // Find or create profile link
-    let profileLink = nav.querySelector('.profile-link');
-    if (!profileLink) {
-      profileLink = document.createElement('li');
-      profileLink.className = 'profile-link';
-      profileLink.innerHTML = '<a href="/pages/profile.html">Profile</a>';
-      
-      // Insert before the login/logout button
-      const loginItem = nav.querySelector('.auth-link');
-      if (loginItem) {
-        nav.insertBefore(profileLink, loginItem);
-      } else {
-        nav.appendChild(profileLink);
-      }
-    }
 
     // Find or create login/logout link
     let authLink = nav.querySelector('.auth-link');
@@ -160,15 +145,13 @@ async function updateAuthUI() {
     }
 
     if (isLoggedIn) {
-      profileLink.style.display = '';
       authLink.innerHTML = '<a href="/logout" class="accent-link">Logout</a>';
     } else {
-      profileLink.style.display = 'none';
       authLink.innerHTML = '<a href="/pages/login.html" class="accent-link">Login</a>';
     }
 
     // Redirect from protected pages if not logged in
-    const protectedPages = ['/pages/profile.html', '/pages/books.html'];
+    const protectedPages = ['/pages/books.html'];
     if (!isLoggedIn && protectedPages.some(page => window.location.pathname.endsWith(page))) {
       window.location.href = '/pages/login.html';
     }
