@@ -144,7 +144,7 @@ async function updateAuthUI() {
     if (isLoggedIn) {
       authLink.innerHTML = '<a href="#" class="accent-link" onclick="handleLogout(event)">Logout</a>';
     } else {
-      authLink.innerHTML = '<a href="pages/login.html" class="accent-link">Login</a>';
+      authLink.innerHTML = '<a href="/pages/login.html" class="accent-link">Login</a>';
     }
 
     // Redirect from protected pages if not logged in
