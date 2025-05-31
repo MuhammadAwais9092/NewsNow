@@ -810,7 +810,7 @@ body.light-mode .footer-bottom {
   }
   
   .search-container {
-    top: calc(var(--header-height) + 10px);
+    top: calc(var(--header-height) - 65px);
     padding: var(--space-1);
   }
   
